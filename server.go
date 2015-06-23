@@ -11,6 +11,6 @@ func main() {
 	
     r.GET("/user/:name", home.GetUser)
 	
-	r.Run(":9000")
+	r.Run(":3000")
 	
 }
