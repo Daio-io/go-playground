@@ -1,16 +1,33 @@
 package main
 
-import "github.com/gin-gonic/gin"
-import "go-test/handlers/home"
+import (
+  "net/http"
+  "github.com/gin-gonic/gin"
+  "go-test/handlers"
+)
 
-func main() {
-	
-	r:= gin.Default()
+// support for working on Google App Engine
+ func init() {
 
-	r.GET("/", home.GetHome)
+  r:= gin.Default()
+
+  r.GET("/", handlers.GetHome)
 	
-	r.GET("/user/:name", home.GetUser)
+  r.GET("/user/:name", handlers.GetUser)
+
+  http.Handle("/", r)
 	
-	r.Run(":3000")
+ }
+
+// Local run
+//  func main() {
 	
-}
+// 	r:= gin.Default()
+
+// 	r.GET("/", home.GetHome)
+	
+// 	r.GET("/user/:name", home.GetUser)
+	
+// 	r.Run(":3000")
+	
+// }
